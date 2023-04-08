@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "Gilroy-medium";
+    src: url(../fonts/Gilroy-Medium.eot) format("eot"),
+         url(../fonts/Gilroy-Medium.woff) format("woff"),
+         url(../fonts/Gilroy-Medium.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal; 
+}
+
+@font-face {
+    font-family: "Gilroy-bold";
+    src: url(../fonts/Gilroy-Bold.eot) format("eot"),
+        url(../fonts/Gilroy-Bold.woff) format("woff"),
+        url(../fonts/Gilroy-Bold.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    max-width: 1445px;
+    margin: 0 auto;
+    font-family: "Gilroy-medium", sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.header {
+    width: 60%;
+    height: 90px;
+    margin: 0 auto;
+    color: #828282;
+    border-bottom: 1px solid #828282;
+    display: flex;
+    align-items: center;
+}
+.header > nav {
+    width: 100%;
+
+}
+.header ul {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.active {
+    font-family: "Gilroy-bold", sans-serif;
+    color: #000;
+}
+
+/* Section main info */
+.main-info {
+    width: 60%;
+    height: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 100px;
+    padding-top: 40px;
+}
+.main-info img {
+    width: 60%;
+    height: 75%;
+    margin: 0 auto;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
+    box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
+ 
+} 
+.main-info__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+}
+.main-info__wrapper h1 {
+    font-family: "Gilroy-Bold";
+    text-transform: uppercase;
+    width: 15%;
+    font-size: 2.5em;
+    line-height: 1.25;     
+}
+.main-info__wrapper p {
+    width: 20%;
+}
+.main-info__wrapper ul {
+    display: flex;
+    justify-content: space-between;
+    transform: rotate(270deg);
+    padding-top: 50px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    line-height: 1.25;
+    width: 70px;      
+}
