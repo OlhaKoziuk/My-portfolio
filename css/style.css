@@ -364,6 +364,9 @@ img[alt="ITEA"] {
 
 }
 @media screen and (max-width: 500px) {
+    .main-info {
+            height: 450px;
+        }
     .main-info__wrapper {
         height: 25%;
         flex-direction: column;
@@ -382,11 +385,15 @@ img[alt="ITEA"] {
     padding: 0;
    }
    .main-info img {
-    width: 80%;
-    height: 75%;
+    width: 70%;
+    height: 68%;
+   }
+   .about-me {
+    height: 400px;
    }
   .about-me__wrapper {
      width: 80%;
+     height: 80%;
  }
  .portfolio img {
     width: 90%;
