@@ -22,6 +22,7 @@ body {
     font-family: "Gilroy-medium", sans-serif;
     font-size: 18px;
     line-height: 1.2;
+    position: relative;
 }
 
 h2 {
@@ -29,6 +30,18 @@ h2 {
     font-size: 1.9em;
 }
 
+
+.burger {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.burger div {
+    width: 100%;
+    border-top: 2px solid #000;
+}
 .header {
     width: 60%;
     height: 70px;
@@ -84,12 +97,14 @@ h2 {
 .main-info__wrapper h1 {
     font-family: "Gilroy-Bold";
     text-transform: uppercase;
-    width: 15%;
+    width: 30%;
     font-size: 2.5em;
     line-height: 1.25;     
 }
 .main-info__wrapper p {
-    width: 21%;
+    width: 30%;
+    margin-right: 60px;
+  
 }
 .main-info__wrapper ul {
     display: flex;
@@ -244,4 +259,167 @@ img[alt="ITEA"] {
 }
 .footer ul + p {
     color: #828282;;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .header, .main-info {
+        width: 70%;
+        padding-bottom: 0;
+        justify-content: space-around;
+    }
+   .portfolio img {
+    width: 60%;
+   }
+   .diplomas ul {
+    width: 90%;
+   }
+}
+@media screen and (max-width: 1000px) {
+    .main-info {
+        height: 600px;
+    }
+    .main-info img {
+        width: 60%;
+        height: 70%;
+    }
+    .about-me__wrapper {
+        width: 60%;
+    }
+    .diplomas {
+        height: 500px;
+    }
+    .diplomas ul {
+        height: 80%;
+    }
+    .diplomas li {
+        width: 33%;
+    }
+     .portfolio img {
+         width: 75%;
+    }
+    .footer {
+            height: 450px;
+     }
+    .footer button {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .header,
+     .main-info {
+        width: 90%;
+     }
+    .main-info__wrapper p {
+        width: 40%;
+        margin-right: 0;
+    }
+    
+    .diplomas {
+        height: 400px;
+    }
+    .skills {
+        height: 250px;
+    }
+    .portfolio {
+            height: 500px;
+     }
+     .footer {
+        height: 400px;
+        padding: 0;
+        justify-content: space-around;
+     }
+     .footer ul {
+        width: 40%;
+     }
+}
+@media screen and (max-width: 600px) {
+    .main-info {
+        height: 500px;
+    }
+        .main-info img {
+            width: 70%;
+            height: 75%;
+        }
+    .main-info__wrapper h1 {
+        font-size: 1.5em;
+    }
+    .skills {
+        height: 200px;
+    }
+    .skills-list {
+        width: 90%;
+    }
+    .skills-list__item>img {
+         width: 60px;
+         height: 60px;
+        }
+   .skills-list__item ul img {
+    width: 13px;
+    height: 13px;
+   }
+   .skills-list__item h3 {
+    font-size: 0.8em;
+   }
+
+}
+@media screen and (max-width: 500px) {
+    .main-info__wrapper {
+        height: 25%;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .main-info__wrapper h1,
+    .main-info__wrapper p {
+        width: 80%;
+    }
+   .main-info__wrapper ul {
+    transform: rotate(0);
+    padding: 0;
+   }
+   .main-info img {
+    width: 90%;
+   }
+  .about-me__wrapper {
+     width: 80%;
+ }
+ .portfolio img {
+    width: 90%;
+ }
+  .portfolio {
+    height: 350px;
+  }
+ .footer {
+    height: 350px;
+    text-align: center;
+ }
+  .footer button {
+      width: 35%;
+      padding: 7px;
+  }
+  .footer ul {
+    width: 50%;
+  }
+     
+}
+
+.hidden {
+    display: none;
+    
+}
+#new-nav {
+    position: absolute;
+    left: 20px;
+    width: 92%;
+    height: 550px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(115, 110, 110, .95);
+    z-index: 5;
 }
