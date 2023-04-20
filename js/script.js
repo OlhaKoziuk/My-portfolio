@@ -90,7 +90,9 @@ function hideBurgerList() {
 const carusel = document.querySelector('.carusel');
 const diplomas = document.querySelectorAll('.carusel__slide img');
 const slide = document.querySelector('.carusel__slide');
-
+const rightScroll = document.querySelector('.right-scroll');
+const leftScroll = document.querySelector('.left-scroll');
+let counter = 0;
 
 function makeSizeItem() {
     diplomas.forEach(item => {
@@ -99,12 +101,24 @@ function makeSizeItem() {
 })
 }
 
-const rightScroll = document.querySelector('.right-scroll');
+
 rightScroll.addEventListener('click', () => {
+    if (counter >= diplomas.length - 1) counter = 1;
+    slide.classList.add('carusel-animation')
+    counter++;
     diplomaWidht = carusel.clientWidth;
-    slide.style.transform = `translateX(-${diplomaWidht}px)`;
- 
-})
+    slide.style.transform = `translateX(-${diplomaWidht * counter}px)`;
+});
+
+leftScroll.addEventListener('click', () => {
+    if (counter <= 0) counter = 1;
+    slide.classList.add('carusel-animation')
+    counter--;
+    diplomaWidht = carusel.clientWidth;
+    slide.style.transform = `translateX(-${diplomaWidht * counter}px)`;
+});
+
+
 
 
 addClass();

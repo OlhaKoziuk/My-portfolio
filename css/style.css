@@ -314,6 +314,14 @@ h2 {
         top: 0;
     }
 }
+.carusel-animation {
+    transition: .6s all ease-in-out;
+}
+.hidden {
+    display: none;
+}
+
+
 
 @media screen and (max-width: 1200px) {
     .header, .main-info {
@@ -326,6 +334,10 @@ h2 {
    }
    .diplomas ul {
     width: 90%;
+   }
+   .carusel {
+       width: 55%;
+    
    }
 }
 @media screen and (max-width: 1000px) {
@@ -371,6 +383,7 @@ h2 {
     .diplomas {
         height: 400px;
     }
+   
     .skills {
         height: 250px;
     }
@@ -385,6 +398,11 @@ h2 {
      .footer ul {
         width: 40%;
      }
+}
+@media screen and (max-width: 700px){
+.carusel {
+      width: 60%;
+  }
 }
 @media screen and (max-width: 600px) {
     .main-info {
@@ -413,6 +431,9 @@ h2 {
    }
    .skills-list__item h3 {
     font-size: 0.8em;
+   }
+   .carusel {
+       width: 70%;
    }
 
 }
@@ -468,6 +489,9 @@ h2 {
   #new-nav {
     height: 530px;
   }
+.carusel {
+     width: 80%;
+ }
      
 }
 
@@ -482,11 +506,13 @@ h2 {
    #new-nav {
        height: 480px;
    }
+   .carusel {
+       width: 90%;
+       height: 88%;
+   }
+      
 }
 
-.hidden {
-    display: none;
-    
-}
+
 
 
