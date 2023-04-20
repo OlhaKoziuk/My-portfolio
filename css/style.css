@@ -163,6 +163,9 @@ h2 {
     width: 50%;
     height: 90%;
     overflow-x: hidden;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
+        box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
 }
 .carusel__slide {
    width: 3000px;
