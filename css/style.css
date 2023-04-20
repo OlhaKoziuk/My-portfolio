@@ -49,10 +49,15 @@ h2 {
     color: #828282;
     border-bottom: 1px solid #828282;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 .header > nav {
-    width: 100%;
+   width: 100%;
+   display: flex;
+    align-items: center;
+     justify-content: space-between;
+
 
 }
 .header ul {
@@ -146,8 +151,33 @@ h2 {
     justify-content: space-around;
     align-items: center;
 }
-
-.diplomas ul {
+.diplomas__wrapper {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.carusel {
+    width: 50%;
+    height: 90%;
+    overflow-x: hidden;
+}
+.carusel__slide {
+   width: 3000px;
+   height: 100%;
+   display: flex;
+   
+   
+   
+}
+.carusel__slide img {
+    width: 600px;
+    height: 100%;
+    
+}
+/* .diplomas ul {
     width: 80%;
     height: 70%;
     margin: 0 auto;
@@ -160,16 +190,16 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
- }
+ }*/
 
-img[alt="Prometheus-first"], img[alt="Prometheus-second"] {
+/* img[alt="Prometheus-first"], img[alt="Prometheus-second"] {
  width: 100%;
  height: 60%;
-}
-img[alt="ITEA"] {
-    width: 80%;
-    height: 100%;
-}
+} 
+/* img[alt="Prometheus-first"], img[alt="Prometheus-second"] {
+ width: 100%;
+ height: 60%;
+} */
 
 /* Slills */
 .skills {
@@ -432,7 +462,7 @@ img[alt="ITEA"] {
     position: absolute;
     left: 20px;
     width: 92%;
-    height: 550px;
+    height: 500px;
     color: #000;
     display: flex;
     flex-direction: column;
