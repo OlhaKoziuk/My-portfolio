@@ -3,6 +3,7 @@ const navItems = document.querySelectorAll('.header li');
 const burger = document.querySelector('.burger');
 const navList = document.querySelector('.header ul');
 const closeButton = document.querySelector('img[alt="close"]');
+const mainPhoto = document.querySelector('[alt="main-photo"]');
 
 
 
@@ -64,6 +65,7 @@ function addBurger() {
 function showBurgerList() {
     burger.addEventListener('click', (e) => {
         navList.setAttribute('id', 'new-nav');
+        mainPhoto.classList.add('main-photo');
         closeButton.classList.remove('hidden')
         navItems.forEach(item => {
             item.classList.remove('hidden');
@@ -73,7 +75,8 @@ function showBurgerList() {
 
 function hideBurgerList() {
     navList.addEventListener('click', () => {
-         navList.removeAttribute('id');
+        navList.removeAttribute('id');
+        mainPhoto.classList.remove('main-photo');
         closeButton.classList.add('hidden')
         navItems.forEach(item => {
             item.classList.add('hidden');
@@ -110,8 +113,8 @@ showBurgerList();
 hideBurgerList();
 makeSizeItem();
 window.addEventListener('resize', makeSizeItem);
-showVisiting();
-showTotalMinutes();
+// showVisiting();
+// showTotalMinutes();
 
 
 
