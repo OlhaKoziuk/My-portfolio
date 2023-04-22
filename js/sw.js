@@ -15,16 +15,16 @@ self.addEventListener("install", async e => { // інсталцяція server w
     await cache.addAll(assets); // записуємо нові файли у наш кеш
 });
 
-self.addEventListener("activate", async e => { // активація server worker
-    let cache = await caches.keys(); // беремо всі кеші, які є на сайті
+// self.addEventListener("activate", async e => { // активація server worker
+//     let cache = await caches.keys(); // беремо всі кеші, які є на сайті
 
-    await Promise.all( // чекаємо, коли кожеш кеш завантажиться
-        cache // беремо ці кеші списком
-            .filter(cache_name => cache_name != staticCache) // створюємо список із кешів, які застралі
-            .filter(cache_name => cache_name != dynamicCache)
-            .map(cache_data => caches.delete(cache_data)) // видаляємо застарілі кеші по черзі
-    );
-});
+//     await Promise.all( // чекаємо, коли кожеш кеш завантажиться
+//         cache // беремо ці кеші списком
+//             .filter(cache_name => cache_name != staticCache) // створюємо список із кешів, які застралі
+//             .filter(cache_name => cache_name != dynamicCache)
+//             .map(cache_data => caches.delete(cache_data)) // видаляємо застарілі кеші по черзі
+//     );
+// });
 
 
 self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
