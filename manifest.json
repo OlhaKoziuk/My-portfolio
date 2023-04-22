@@ -1,12 +1,11 @@
 {
-   "theme_color": "#000000",
+    "theme_color": "#000000",
     "background_color": "#f8f6f5",
     "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
-    "name": "Potrfolio",
-    "short_name": "Portfolio",
-    "lang": "en",
+    "name": "Alex Calculator",
+    "short_name": "Calculator",
     "icons": [
         {
             "src": "./icons-for-pwa/js-48x48.png",
