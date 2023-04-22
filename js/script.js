@@ -4,10 +4,12 @@ const burger = document.querySelector('.burger');
 const navList = document.querySelector('.header ul');
 const closeButton = document.querySelector('img[alt="close"]');
 const mainPhoto = document.querySelector('[alt="main-photo"]');
-
-
-
-// Homework
+const carusel = document.querySelector('.carusel');
+const diplomas = document.querySelectorAll('.carusel__slide img');
+const slide = document.querySelector('.carusel__slide');
+const rightScroll = document.querySelector('.right-scroll');
+const leftScroll = document.querySelector('.left-scroll');
+let counter = 0;
 
 function showVisiting() {
     window.addEventListener('pageshow', (e) => {
@@ -33,24 +35,6 @@ function showTotalMinutes() {
 function setMinutes() {
  localStorage.setItem('minute', (localStorage.getItem('minute') || '') + 1) 
 }
-
-
-// --------------------------------------------------------------------
-
-function addClass() {
-    links.forEach(item => {
-        item.addEventListener('click', (e) => {
-            removeClass();
-            e.target.classList.add('active');
-        })
-    })
-}
-function removeClass() {
-    links.forEach(item => {
-        item.classList.remove('active');
-    })
-}
-
 
 // I`m still working
 function addBurger() {
@@ -78,31 +62,24 @@ function hideBurgerList() {
         navList.removeAttribute('id');
         mainPhoto.classList.remove('main-photo');
         closeButton.classList.add('hidden')
-        navItems.forEach(item => {
+        if (window.innerWidth <= 600) {
+            navItems.forEach(item => {
             item.classList.add('hidden');
         });
+        }
     })
 }
-
-
-
-
-const carusel = document.querySelector('.carusel');
-const diplomas = document.querySelectorAll('.carusel__slide img');
-const slide = document.querySelector('.carusel__slide');
-const rightScroll = document.querySelector('.right-scroll');
-const leftScroll = document.querySelector('.left-scroll');
-let counter = 0;
 
 function makeSizeItem() {
     diplomas.forEach(item => {
     let diplomaWidht = carusel.clientWidth;
-    item.style.width = `${diplomaWidht}px`
+        item.style.width = `${diplomaWidht}px`
+       
 })
 }
 
 
-rightScroll.addEventListener('click', () => {
+ rightScroll.addEventListener('click', () => {
     if (counter >= diplomas.length - 1) counter = 1;
     slide.classList.add('carusel-animation')
     counter++;
@@ -121,7 +98,7 @@ leftScroll.addEventListener('click', () => {
 
 
 
-addClass();
+
 addBurger();
 showBurgerList();
 hideBurgerList();
@@ -132,7 +109,13 @@ window.addEventListener('resize', makeSizeItem);
 
 
 
-
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => navigator.serviceWorker.ready.then((worker) => {
+        worker.sync.register('syncdata');
+      }))
+      .catch((err) => console.log(err));
+}
 
   
 

@@ -71,6 +71,16 @@ h2 {
     color: #000;
 }
 
+.header li {
+    transition: 2s;
+}
+.header li:hover,
+.header li:focus {
+    font-family: "Gilroy-bold", sans-serif;
+    color: #000;
+    transition: 2s;  
+}
+
 /* Section main info */
 .main-info {
     width: 60%;
@@ -167,12 +177,14 @@ h2 {
         -moz-box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
         box-shadow: 10px 10px 5px 0px rgba(112, 91, 94, 1);
 }
+.carusel-vertical {
+    width: 20%;
+    height: 90%;
+}
 .carusel__slide {
    width: 3000px;
    height: 100%;
-   display: flex;
-   
-   
+   display: flex;   
    
 }
 .carusel__slide img {
