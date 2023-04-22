@@ -55,35 +55,40 @@ self.addEventListener("activate", async e => { // активація server work
 
 
 self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
-    
-    e.respondWith(checkCache(e.request));
+    e.respondWith(caches.match(e.request).then(function (response) {
+        if (response) {
+           return response
+        }
+        return fetch(e.request)
+   }) ) 
+    // e.respondWith(checkCache(e.request));
 
-    e.respondWith(caches.match(e.request));
-     // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+    // e.respondWith(caches.match(e.request));
+    //  // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
 });
 
 
-async function checkCache (request) {
-    const cache = await caches.match(request);
-    return cache ?? checkOnline(request);
-};
+// async function checkCache (request) {
+//     const cache = await caches.match(request);
+//     return cache ?? checkOnline(request);
+// };
 
-async function checkOnline(request){
-    const cache = await caches.open(dynamicCache)
+// async function checkOnline(request){
+//     const cache = await caches.open(dynamicCache)
 
-    try{
-        const res = await fetch(request)
-        await cache.put(request, res.clone())
-        return res
-    }
-    catch(e){
-        const cachedRes = await cache.match(request);
+//     try{
+//         const res = await fetch(request)
+//         await cache.put(request, res.clone())
+//         return res
+//     }
+//     catch(e){
+//         const cachedRes = await cache.match(request);
 
-        if (cachedRes) {
-            return cachedRes;
-        } else {
-            return caches.match('./offline.html');
-        }
+//         if (cachedRes) {
+//             return cachedRes;
+//         } else {
+//             return caches.match('./offline.html');
+//         }
         
-    }
-}
+//     }
+// }
