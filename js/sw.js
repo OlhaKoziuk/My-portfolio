@@ -1,5 +1,5 @@
-let staticCache = 'portfolio-v5'; // створення назви кешу
-let dynamicCache = "portfolio-app-v5";
+let staticCache = 'portfolio'; // створення назви кешу
+let dynamicCache = "portfolio-app";
 let assets = [ // створення списку з файлів, які будуть кешуватися
     "/",
     "/manifest.json",
@@ -21,19 +21,18 @@ let assets = [ // створення списку з файлів, які буд
     "/img/white-star.png",
     "/index.html",
     "/offline.html",
-    "/js/script.js",
-    "/mvc/view.js",
-    "/mvc/model.js",
-    "/mvc/controller.js",
-    "/mvc/currency.worker.js",
-   
+    "/js/script.js",   
 ];
 
 
-self.addEventListener("install", async e => { // інсталцяція server worker
+self.addEventListener("install", async e => {
+   // інсталцяція server worker
     let cache = await caches.open(staticCache); // відкриваємо наш кеш
     await cache.addAll(assets); // записуємо нові файли у наш кеш
 });
+
+
+
 
 self.addEventListener("activate", async e => { // активація server worker
     let cache = await caches.keys(); // беремо всі кеші, які є на сайті
@@ -51,7 +50,8 @@ self.addEventListener("fetch", e => { // робимо запит на наш ser
     
     e.respondWith(checkCache(e.request));
 
-    // e.respondWith(caches.match(e.request)); // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+    e.respondWith(caches.match(e.request));
+     // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
 });
 
 
