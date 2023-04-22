@@ -37,7 +37,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches
             .open(staticCache)
-            .then((cache) => cache.addAll(['/img/css.png']))
+            .then((cache) => cache.addAll(['/img/css.png', "/index.html"]))
     );
 });
 
