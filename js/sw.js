@@ -21,17 +21,25 @@ let assets = [ // створення списку з файлів, які буд
     "/img/white-star.png",
     "/index.html",
     "/offline.html",
-    "/js/script.js",   
+    "/js/script.js"  
 ];
 
 
-self.addEventListener("install", async e => {
-   // інсталцяція server worker
-    let cache = await caches.open(staticCache); // відкриваємо наш кеш
-    await cache.addAll(assets); // записуємо нові файли у наш кеш
+
+
+// self.addEventListener("install", async e => {
+//    // інсталцяція server worker
+//     let cache = await caches.open(staticCache); // відкриваємо наш кеш
+//     await cache.addAll(assets); // записуємо нові файли у наш кеш
+// });
+
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches
+            .open(staticCache)
+            .then((cache) => cache.addAll(['/img/css.png']))
+    );
 });
-
-
 
 
 self.addEventListener("activate", async e => { // активація server worker
