@@ -26,12 +26,12 @@ self.addEventListener('activate', function (e) {
     )
 })
 
-self.addEventListener("fetch", e => {
-    e.respondWith(
-        fetch(e.reqest).catch(() => {
-            return caches.match(e.reqest);
-        })
-    )
+self.addEventListener("fetch", event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })   
+     )
 });
 
 
