@@ -27,12 +27,12 @@ self.addEventListener("install", async e => { // інсталцяція server w
 // });
 
 
-self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
+// self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
     
-    e.respondWith(checkCache(e.request));
+//     e.respondWith(checkCache(e.request));
 
-    e.respondWith(caches.match(e.request)); 
-    // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
-});
+//     e.respondWith(caches.match(e.request)); 
+//     // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+// });
 
 
