@@ -114,9 +114,7 @@ if ("serviceWorker" in navigator) { // дізнаємось, чи наш сай�
 }
 
 
-document.addEventListener("DOMContentLoaded", function(){
-    new Controller(new Model(), new View());
-});
+
   
 
        
