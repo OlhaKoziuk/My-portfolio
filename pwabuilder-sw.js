@@ -1,6 +1,6 @@
-let staticCache = 'portfolio'; // створення назви кешу
+let staticCache = 'portfolio'; 
 let dynamicCache = "portfolio-v5";
-let assets = [ // створення списку з файлів, які будуть кешуватися
+let assets = [ 
     "/",
     "./manifest.json",
     "./index.html",
@@ -10,28 +10,28 @@ let assets = [ // створення списку з файлів, які буд
 ];
 
 
-self.addEventListener("install", async e => { // інсталцяція server worker
-    let cache = await caches.open(staticCache); // відкриваємо наш кеш
-    await cache.addAll(assets); // записуємо нові файли у наш кеш
+self.addEventListener("install", async e => { 
+    let cache = await caches.open(staticCache); 
+    await cache.addAll(assets); 
 });
 
-self.addEventListener("activate", async e => { // активація server worker
-    let cache = await caches.keys(); // беремо всі кеші, які є на сайті
+self.addEventListener("activate", async e => { 
+    let cache = await caches.keys(); 
 
-    await Promise.all( // чекаємо, коли кожеш кеш завантажиться
-        cache // беремо ці кеші списком
-            .filter(cache_name => cache_name != staticCache) // створюємо список із кешів, які застралі
+  await Promise.all(
+    cache 
+            .filter(cache_name => cache_name != staticCache) 
             .filter(cache_name => cache_name != dynamicCache)
-            .map(cache_data => caches.delete(cache_data)) // видаляємо застарілі кеші по черзі
+            .map(cache_data => caches.delete(cache_data)) 
     );
 });
 
 
-self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
+self.addEventListener("fetch", e => { 
     
     e.respondWith(checkCache(e.request));
 
-    // e.respondWith(caches.match(e.request)); // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+    e.respondWith(caches.match(e.request)); // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
 });
 
 
