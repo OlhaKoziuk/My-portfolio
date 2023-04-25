@@ -6,7 +6,10 @@ let assets = [
     "./index.html",
     "./offline.html",
     "./js/script.js",
-  
+    "./css/reset.css",
+    "./css/style.css",
+    "./pwabuilder.js",
+     
 ];
 
 
