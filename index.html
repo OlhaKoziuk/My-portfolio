@@ -11,7 +11,7 @@
         if(navigator.serviceWorker.controller) {
             console.log('found');
         } else {
-            navigator.serviceWorker.register('pwa-builder-sw.js', {
+            navigator.serviceWorker.register('pwabuilder-sw.js', {
                 scope: "./"
             })
             .then(function(reg) {
