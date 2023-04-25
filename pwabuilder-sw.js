@@ -4,7 +4,24 @@ const urlToCache = [
     './index.html',
      './offline.html',
     './css/reset.css',
-    './css/style.css'
+    './css/style.css',
+    './img/bootstrap.png',
+    './img/close.png',
+    './img/css.png',
+    './img/facebook.png',
+    './img/finsweet.png',
+    './img/git.png',
+    './img/html.png',
+    './img/insta.png',
+    './img/ITEA.png',
+    './img/javascript.png',
+    './img/linkedin.png',
+    './img/my-photo.jpg',
+    './img/Prometheus-first.jpg',
+    './img/Prometheus-second',
+    './img/Star.png',
+    './img/white-star.png',
+    './js/script.js'
 ];
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -15,19 +32,6 @@ self.addEventListener('install', event => {
     )
 });
 
-// self.addEventListener('activate', function (event) {
-//     event.waitUntil(
-//         caches.keys().then(function (names) {
-//             return Promise.all(
-//                 names.filter(function (name) {
-//                     return name;
-//                 }).map(function (name) {
-//                     return caches.delete(name);
-//                 })
-//             );
-//         })
-//     );
-// });
 
 self.addEventListener("activate", async e => {
     let cache = await caches.keys(); 
