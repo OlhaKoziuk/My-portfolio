@@ -2,6 +2,7 @@ const cacheName = "portfolio";
 const urlToCache = [
     '/',
     './index.html',
+     './offline.html',
     './css/reset.css',
     './css/style.css'
 ];
@@ -28,11 +29,14 @@ self.addEventListener('activate', function (event) {
     );
 });
 
-self.addEventListener("fetch", e => { 
-    
-    e.respondWith(checkCache(e.request));
-
-    // e.respondWith(caches.match(e.request)); 
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        }).catch(() => {
+            return caches.match('./offline.html');
+        })
+    );
 });
     
 
