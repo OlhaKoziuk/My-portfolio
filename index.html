@@ -10,9 +10,9 @@
              window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./pwabuilder-sw.js')
                 .then(registration => {
-                    console.log(registred);
+                    console.log('registred');
                 }, err => {
-                    console.log(failed);
+                    console.log('failed');
                 })
              })
              
