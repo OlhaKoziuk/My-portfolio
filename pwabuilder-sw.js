@@ -15,17 +15,27 @@ self.addEventListener('install', event => {
     )
 });
 
-self.addEventListener('activate', function (event) {
-    event.waitUntil(
-        caches.keys().then(function (names) {
-            return Promise.all(
-                names.filter(function (name) {
-                    return name;
-                }).map(function (name) {
-                    return caches.delete(name);
-                })
-            );
-        })
+// self.addEventListener('activate', function (event) {
+//     event.waitUntil(
+//         caches.keys().then(function (names) {
+//             return Promise.all(
+//                 names.filter(function (name) {
+//                     return name;
+//                 }).map(function (name) {
+//                     return caches.delete(name);
+//                 })
+//             );
+//         })
+//     );
+// });
+
+self.addEventListener("activate", async e => {
+    let cache = await caches.keys(); 
+
+    await Promise.all( 
+        cache 
+            .filter(cache_name => cache_name != staticCache) 
+            .map(cache_data => caches.delete(cache_data)) 
     );
 });
 
