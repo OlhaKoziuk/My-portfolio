@@ -23,7 +23,7 @@ self.addEventListener("activate", async e => {
 
     await Promise.all( 
         cache 
-            .filter(cache_name => cache_name != staticCache) 
+            .filter(cache_name => cache_name != cacheName) 
             .map(cache_data => caches.delete(cache_data)) 
     );
 });
