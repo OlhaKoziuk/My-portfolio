@@ -1,16 +1,61 @@
-const CACHE = "offline.html";
+let staticCache = 'portfolio'; // створення назви кешу
+let dynamicCache = "portfolio-v5";
+let assets = [ // створення списку з файлів, які будуть кешуватися
+    "/",
+    "./manifest.json",
+    "./index.html",
+    "./offline.html",
+    "./js/script.js",
+  
+];
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
+self.addEventListener("install", async e => { // інсталцяція server worker
+    let cache = await caches.open(staticCache); // відкриваємо наш кеш
+    await cache.addAll(assets); // записуємо нові файли у наш кеш
 });
 
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
+self.addEventListener("activate", async e => { // активація server worker
+    let cache = await caches.keys(); // беремо всі кеші, які є на сайті
+
+    await Promise.all( // чекаємо, коли кожеш кеш завантажиться
+        cache // беремо ці кеші списком
+            .filter(cache_name => cache_name != staticCache) // створюємо список із кешів, які застралі
+            .filter(cache_name => cache_name != dynamicCache)
+            .map(cache_data => caches.delete(cache_data)) // видаляємо застарілі кеші по черзі
+    );
+});
+
+
+self.addEventListener("fetch", e => { // робимо запит на наш server worker (ось тут більшість коду та логіки буде створюватися)
+    
+    e.respondWith(checkCache(e.request));
+
+    // e.respondWith(caches.match(e.request)); // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+});
+
+
+async function checkCache (request) {
+    const cache = await caches.match(request);
+    return cache ?? checkOnline(request);
+};
+
+async function checkOnline(request){
+    const cache = await caches.open(dynamicCache)
+
+    try{
+        const res = await fetch(request)
+        await cache.put(request, res.clone())
+        return res
+    }
+    catch(e){
+        const cachedRes = await cache.match(request);
+
+        if (cachedRes) {
+            return cachedRes;
+        } else {
+            return caches.match('./offline.html');
+        }
+        
+    }
+}

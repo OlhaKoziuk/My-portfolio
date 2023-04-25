@@ -109,11 +109,14 @@ window.addEventListener('resize', makeSizeItem);
 
 
 
-if ("serviceWorker" in navigator) { 
-    window.addEventListener("load", () =>
-        navigator.serviceWorker.register("./js/sw.js")); 
+if ("serviceWorker" in navigator) { // дізнаємось, чи наш сайт підтримує serviceWorker
+  window.addEventListener("load", () => navigator.serviceWorker.register("/pwabuilder-sw.js")); 
 }
 
+
+document.addEventListener("DOMContentLoaded", function(){
+    new Controller(new Model(), new View());
+});
   
 
        
