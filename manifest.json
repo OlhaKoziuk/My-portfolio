@@ -7,7 +7,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "Portfolio",
-  "start_url": "https://my-portfolio-buffi4ka.vercel.app/",
+  "start_url": "/",
   "theme_color": "#535050",
   "categories": [],
   "screenshots": [],
