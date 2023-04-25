@@ -29,8 +29,11 @@ self.addEventListener("activate", async e => {
 
 self.addEventListener("fetch", e => { 
     
-  e.respondWith(checkCache(e.request));
-  e.respondWith(caches.match(e.request));
+  e.respondWith(caches.match(e.request).then(
+    response => {
+      return response || fetch(e.request)
+    }
+  ));
 
 
 });
