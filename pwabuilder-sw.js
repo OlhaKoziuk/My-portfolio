@@ -29,9 +29,10 @@ self.addEventListener("activate", async e => {
 
 self.addEventListener("fetch", e => { 
     
-    e.respondWith(checkCache(e.request));
+  e.respondWith(checkCache(e.request));
+  e.respondWith(caches.match(e.request));
 
-    e.respondWith(caches.match(e.request)); // робимо так, щоб наш сайт завантажувався з кешу, який ми знайшли по запуту
+
 });
 
 
