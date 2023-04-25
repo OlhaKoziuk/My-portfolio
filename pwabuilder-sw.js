@@ -6,6 +6,7 @@ const urlToCache = [
     './css/reset.css',
     './css/style.css',
     './img/my-photo.jpg',
+    './img/Prometheus-first.jpg',
     './js/script.js'
 ];
 self.addEventListener('install', event => {
@@ -20,7 +21,6 @@ self.addEventListener('install', event => {
 
 self.addEventListener("activate", async e => {
     let cache = await caches.keys(); 
-
     await Promise.all( 
         cache 
             .filter(cache_name => cache_name != cacheName) 
