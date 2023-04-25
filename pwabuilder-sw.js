@@ -28,11 +28,34 @@ self.addEventListener('activate', function (event) {
     );
 });
 
-self.addEventListener('fetch', event => {
-    event.responWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request)
-        })
-    )
-})
+self.addEventListener("fetch", e => { 
     
+    e.respondWith(checkCache(e.request));
+
+    // e.respondWith(caches.match(e.request)); 
+});
+    
+async function checkCache (request) {
+    const cache = await caches.match(request);
+    return cache ?? checkOnline(request);
+};
+
+async function checkOnline(request){
+    const cache = await caches.open(dynamicCache)
+
+    try{
+        const res = await fetch(request)
+        await cache.put(request, res.clone())
+        return res
+    }
+    catch(e){
+        const cachedRes = await cache.match(request);
+
+        if (cachedRes) {
+            return cachedRes;
+        } else {
+            return caches.match('./offline.html');
+        }
+        
+    }
+}
